@@ -48,10 +48,18 @@
             onFetchData={(state,instance) => {
               this.setState({loading: true})
               const s = state.sorted && state.sorted.length>0? state.sorted[0] : {id:'name',desc:false}
+              if(isNaN(state.page)) {
+                state.page = 1
+              }
+              if(isNaN(state.pageSize)) {
+                state.pageSize = 20
+              }
+
+              }
               Axios.get('http://mcm-api.loa.fi/stock', {
                 params: {
-                  page: isNaN(state.page)? 1 : state.page,
-                  pageSize: isNaN(state.pageSize)? 20 : state.pageSize,
+                  page: state.page,
+                  pageSize: state.pageSize,
                   sort: s.id,
                   order: s.desc? "DESC" : "ASC",
                   filtered: state.filtered
