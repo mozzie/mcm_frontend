@@ -54,8 +54,6 @@
               if(isNaN(state.pageSize)) {
                 state.pageSize = 20
               }
-
-              }
               Axios.get('http://mcm-api.loa.fi/stock', {
                 params: {
                   page: state.page,
