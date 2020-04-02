@@ -50,8 +50,8 @@
               const s = state.sorted && state.sorted.length>0? state.sorted[0] : {id:'name',desc:false}
               Axios.get('http://mcm-api.loa.fi/stock', {
                 params: {
-                  page: state.page,
-                  pageSize: state.pageSize,
+                  page: isNaN(state.page)? 1 : state.page,
+                  pageSize: isNaN(state.pageSize)? 20 : state.pageSize,
                   sort: s.id,
                   order: s.desc? "DESC" : "ASC",
                   filtered: state.filtered
