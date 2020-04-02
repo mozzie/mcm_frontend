@@ -42,18 +42,13 @@
           <div id="main">
           <button onClick={this.update}>  fetch new</button>
           <ReactTable
+            showPagination={false}
             data={this.state.cards}
             loading={this.state.loading}
             manual
             onFetchData={(state,instance) => {
               this.setState({loading: true})
               const s = state.sorted && state.sorted.length>0? state.sorted[0] : {id:'name',desc:false}
-              if(isNaN(state.page)) {
-                state.page = 1
-              }
-              if(isNaN(state.pageSize)) {
-                state.pageSize = 20
-              }
               Axios.get('http://mcm-api.loa.fi/stock', {
                 params: {
                   page: state.page,
