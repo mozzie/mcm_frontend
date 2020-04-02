@@ -63,6 +63,13 @@
                     loading: false
                   })
                 })
+                .catch((error) => {
+                  this.setState({
+                    cards: [],
+                    loading: false
+                  })
+                  console.log(error.response)
+                })
             }}
             columns={this.columns}/>
           </div>
