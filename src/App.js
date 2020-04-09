@@ -25,6 +25,10 @@
         id: 'trend_diff',
         accessor: d => (d.price - d.trend_price)/100,
         Header: 'Trend difference'
+      }, {
+        id: 'mcm_comment',
+        accessor: d => d.mcm_comment,
+        Header: 'comment'
       }
     ];
       update = (e) => {
