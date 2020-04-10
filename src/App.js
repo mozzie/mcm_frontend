@@ -31,20 +31,30 @@
         Header: 'comment'
       }
     ];
-      update = (e) => {
-        e.preventDefault();
-        Axios.get('http://mcm-api.loa.fi/update')
-          .then((res) => {
-            this.setState({
-              cards: res.data
-            })
+    update = (e) => {
+      e.preventDefault();
+      Axios.get('http://mcm-api.loa.fi/update')
+        .then((res) => {
+          this.setState({
+            cards: res.data
           })
-      }
+        })
+    }
+    trends = (e) => {
+      e.preventDefault();
+      Axios.get('http://mcm-api.loa.fi/trends')
+        .then((res) => {
+          this.setState({
+            cards: res.data
+          })
+        })
+    }
 
       render() {
         return (
           <div id="main">
-          <button onClick={this.update}>  fetch new</button>
+          <button onClick={this.update}>fetch new</button>
+          <button onClick={this.trends}>update trends</button>
           <ReactTable
             showPagination={false}
             data={this.state.cards}
