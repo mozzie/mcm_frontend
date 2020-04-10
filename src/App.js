@@ -7,7 +7,8 @@
     class App extends Component {
       state = {
         cards : [],
-        loading: false
+        loading: false,
+        limit: 5000
       }
       columns = [{
         id: 'name',
@@ -36,7 +37,8 @@
       Axios.get('http://mcm-api.loa.fi/update')
         .then((res) => {
           this.setState({
-            cards: res.data
+            cards: res.data.data,
+            limit: res.data.limit
           })
         })
     }
@@ -45,7 +47,8 @@
       Axios.get('http://mcm-api.loa.fi/trends')
         .then((res) => {
           this.setState({
-            cards: res.data
+            cards: res.data.data,
+            limit: res.data.limit
           })
         })
     }
@@ -53,6 +56,7 @@
       render() {
         return (
           <div id="main">
+          <div id="limit">MCM-queries left: {this.state.limit}</div>
           <button onClick={this.update}>fetch new</button>
           <button onClick={this.trends}>update trends</button>
           <ReactTable
