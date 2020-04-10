@@ -15,15 +15,15 @@
         Header: 'Name'
       }, {
         id: 'price',
-        accessor: d => d.price/100,
+        accessor: d => (d.price/100).toFixed(2),
         Header: 'Price'
       }, {
         id: 'trend_price',
-        accessor: d => d.trend_price/100,
+        accessor: d => (d.trend_price/100).toFixed(2),
         Header: 'Trend'
       }, {
         id: 'trend_diff',
-        accessor: d => (d.price - d.trend_price)/100,
+        accessor: d => ((d.price - d.trend_price)/100).toFixed(2),
         Header: 'Trend difference'
       }, {
         id: 'mcm_comment',
