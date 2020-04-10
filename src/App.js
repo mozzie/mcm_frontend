@@ -48,7 +48,7 @@
         .then((res) => {
           this.setState({
             cards: res.data.data,
-            limit: res.data.limit
+            limit: res.data.limit || this.state.limit
           })
         })
     }
