@@ -12,7 +12,7 @@
       }
       columns = [{
         id: 'name',
-        accessor: d => `${d.foil?"foil ":""}${d.name} (${d.card_set}) ${d.playset? "playset":""}`,
+        accessor: d => `${d.amount}x ${d.foil?"foil ":""}${d.name} (${d.card_set}) ${d.playset? "playset":""}`,
         Header: 'Name'
       }, {
         id: 'price',
