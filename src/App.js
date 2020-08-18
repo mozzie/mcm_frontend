@@ -33,22 +33,26 @@
       }
     ];
     update = (e) => {
+      this.setState({loading: true})
       e.preventDefault();
       Axios.get('http://mcm-api.loa.fi/update')
         .then((res) => {
           this.setState({
             cards: res.data.data,
-            limit: res.data.limit
+            limit: res.data.limit,
+            loading: false
           })
         })
     }
     trends = (e) => {
+      this.setState({loading: true})
       e.preventDefault();
       Axios.get('http://mcm-api.loa.fi/trends')
         .then((res) => {
           this.setState({
             cards: res.data.data,
-            limit: res.data.limit || this.state.limit
+            limit: res.data.limit || this.state.limit,
+            loading: false
           })
         })
     }

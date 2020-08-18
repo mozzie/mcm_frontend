@@ -11,6 +11,10 @@
         limit: 5000
       }
       columns = [{
+        id: 'timestamp',
+        accessor: d => d.timestamp,
+        Header: 'Timestamp'
+      },{
         id: 'name',
         accessor: d => `${d.foil?"foil ":""}${d.name} (${d.card_set}) ${d.playset? "playset":""}`,
         Header: 'Name'
@@ -25,12 +29,14 @@
       }
     ];
     update = (e) => {
+      this.setState({loading: true})
       e.preventDefault();
       Axios.get('http://mcm-api.loa.fi/updatesold')
         .then((res) => {
           this.setState({
-            cards: res.data.data,
-            limit: res.data.limit
+            cards: res.data,
+            limit: res.data.limit,
+            loading: false
           })
         })
     }
